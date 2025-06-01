@@ -5,29 +5,55 @@
 #include <ArduinoJson.h>
 #include <ESP32Time.h>
 #include <WiFi.h>
-#include "plc_version.h"
+#include <esp_wifi.h>
+//#include <ErriezDS1307.h>
+#include <PCF8574.h>
+#include <I2C_RTC.h>
+#include <FRAM.h>
 
-//------------------- Main Function Parts -------------------
-void     initPLC(uint16_t boardver = 1);
-bool     getM(uint16_t addr);
-void     setM(uint16_t addr);
-void     resetM(uint16_t addr);
-uint8_t  getU8D(uint16_t addr);
-uint16_t getU16D(uint16_t addr);
-uint32_t getU32D(uint16_t addr);
-uint16_t getT(uint16_t _t);
-uint16_t getC(uint16_t _t);
-float    getFD(uint16_t addr);
-void     setU8D(uint16_t addr,uint8_t val);
-void     setU16D(uint16_t addr,uint16_t val);
-void     setU32D(uint16_t addr,uint32_t val);
-void     setFD(uint16_t addr,float val);
+/*---------------------------------------------------------------
+												  MainFunction parts
+---------------------------------------------------------------*/
+// - Register access functions
+void      initPLC(uint16_t boardver = 1);
+void      initPLC(uint8_t* x,uint8_t* y,int rrx,int rtx,int sda,int scl);
+bool      getM(uint16_t addr);
+void      setM(uint16_t addr);
+void      resetM(uint16_t addr);
+uint8_t   getU8D(uint16_t addr);
+uint16_t  getU16D(uint16_t addr);
+uint32_t  getU32D(uint16_t addr);
+uint16_t  getT(uint16_t _t);
+uint16_t  getC(uint16_t _t);
+float     getFD(uint16_t addr);
+void      setU8D(uint16_t addr,uint8_t val);
+void      setU16D(uint16_t addr,uint16_t val);
+void      setU32D(uint16_t addr,uint32_t val);
+void      setFD(uint16_t addr,float val);
+bool			getX(uint16_t addr);
+bool			getY(uint16_t addr);
+void 			setY(uint16_t addr);
+void 			resetY(uint16_t addr);
 
-void     initRTC();
-void     RTCSettime(int sc,int min,int hr,int da,int mt,int yr);
-void     updateRTC();
+//- PLC IO functions
+void     setupPLCModule(uint8_t* _XI,uint8_t* _YO);
+
+// - Utility functions
+void      initRTC();
+void      RTCSettime(int sc,int min,int hr,int da,int mt,int yr);
+void      updateRTC();
+//void      assignMAC(u8* mac);
 
 //------------------- LED Status function ------------------
+// PLC Type definitions
+extern const int ESP32_CONTROL;
+extern const int MINIPLC_32U;
+extern const int DINO_PLC_V2;
+extern const int MINIPLC_S3;
+extern const int MINIPLC_32UE;
+extern const int DIKU_PLC;
+extern const int IPLC;
+
 extern void  RUN_ON();
 extern void  RUN_OFF();
 extern void  TOGGLE_RUN();
