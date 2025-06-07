@@ -5,7 +5,7 @@ long lastTime;
 bool m0;
 
 void setup(){
-  initPLC(MINIPLC_32UE);
+  initPLC(DINO_PLC_V2);
   //initLCD();
   //lcdPrint("Hello World",0,0);
 }
