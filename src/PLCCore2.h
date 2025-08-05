@@ -2,11 +2,11 @@
 #define MINIPLC_H
 #include <Arduino.h>
 #include <SPIFFS.h>
+#include <FFat.h>
 #include <ArduinoJson.h>
 #include <ESP32Time.h>
 #include <WiFi.h>
 #include <esp_wifi.h>
-//#include <ErriezDS1307.h>
 #include <PCF8574.h>
 #include <I2C_RTC.h>
 #include <FRAM.h>
@@ -15,7 +15,7 @@
 												  MainFunction parts
 ---------------------------------------------------------------*/
 // - Register access functions
-void      initPLC(uint16_t boardver = 1);
+void      initPLC(uint16_t boardver = 1,bool useSPIFFS = true);
 void      initPLC(uint8_t* x,uint8_t* y,int rrx,int rtx,int sda,int scl);
 bool      getM(uint16_t addr);
 void      setM(uint16_t addr);

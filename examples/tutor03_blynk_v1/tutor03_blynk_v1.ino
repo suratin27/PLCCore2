@@ -21,7 +21,7 @@ BLYNK_WRITE(V2){                           //- Received v10 data to be used to c
 }
 
 void setup(){
-  initPLC();
+  initPLC(MINIPLC_32UE,false);
   Blynk.begin(auth,ssid,pass,"blynk.iot-cm.com", 8080);
 }
 

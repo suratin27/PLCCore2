@@ -4,3 +4,11 @@
 # Edition released
  # - v 1.0 
    - First released
+ # - v 1.0.8
+   - Bug fixed
+     - ZRST
+     - MUL ,DIV
+     - FLT
+ # - v 1.0.9
+   - Bug fixed
+     - Modbus RTU buffer problem
