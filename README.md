@@ -12,3 +12,5 @@
  # - v 1.0.9
    - Bug fixed
      - Modbus RTU buffer problem
+ # - v 1.0.10
+   - Serial server for Ethernet ,WiFi
